@@ -1,0 +1,230 @@
+mode: rule
+log-level: info
+ipv6: true
+allow-lan: false
+unified-delay: true
+tcp-concurrent: true
+find-process-mode: strict
+global-client-fingerprint: chrome
+
+proxies: []
+proxy-providers: {}
+
+proxy-groups:
+  - name: 🚀 Proxy
+    type: select
+    include-all: true
+    proxies:
+      - DIRECT
+
+  - name: 🤖 AI
+    type: select
+    proxies:
+      - 🚀 Proxy
+      - 🎯 Direct
+      - 🛑 Reject
+
+  - name: 🍎 Apple
+    type: select
+    proxies:
+      - 🎯 Direct
+      - 🚀 Proxy
+      - 🛑 Reject
+
+  - name: 💻 Microsoft
+    type: select
+    proxies:
+      - 🚀 Proxy
+      - 🎯 Direct
+      - 🛑 Reject
+
+  - name: 🧑‍💻 Dev
+    type: select
+    proxies:
+      - 🚀 Proxy
+      - 🎯 Direct
+      - 🛑 Reject
+
+  - name: 🎬 Media
+    type: select
+    proxies:
+      - 🚀 Proxy
+      - 🎯 Direct
+      - 🛑 Reject
+
+  - name: 🎯 Direct
+    type: select
+    proxies:
+      - DIRECT
+      - 🚀 Proxy
+
+  - name: 🛑 Reject
+    type: select
+    proxies:
+      - REJECT
+
+rule-providers:
+  apple-intelligence:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./providers/apple-intelligence.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AppleIntelligence/AppleIntelligence.yaml
+    interval: 86400
+
+  siri:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./providers/siri.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Siri/Siri.yaml
+    interval: 86400
+
+  openai:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./providers/openai.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/OpenAI/OpenAI.yaml
+    interval: 86400
+
+  anthropic:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./providers/anthropic.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Anthropic/Anthropic.yaml
+    interval: 86400
+
+  gemini:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./providers/gemini.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Gemini/Gemini.yaml
+    interval: 86400
+
+  bing:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./providers/bing.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Bing/Bing.yaml
+    interval: 86400
+
+  github:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./providers/github.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GitHub/GitHub.yaml
+    interval: 86400
+
+  github-copilot:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./providers/github-copilot.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GitHubCopilot/GitHubCopilot.yaml
+    interval: 86400
+
+  apple:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./providers/apple.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Apple/Apple.yaml
+    interval: 86400
+
+  microsoft:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./providers/microsoft.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Microsoft/Microsoft.yaml
+    interval: 86400
+
+  youtube:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./providers/youtube.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/YouTube/YouTube.yaml
+    interval: 86400
+
+  netflix:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./providers/netflix.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Netflix/Netflix.yaml
+    interval: 86400
+
+  disney:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./providers/disney.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Disney/Disney.yaml
+    interval: 86400
+
+  telegram:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./providers/telegram.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Telegram/Telegram.yaml
+    interval: 86400
+
+  china-max:
+    type: http
+    behavior: classical
+    format: yaml
+    path: ./providers/china-max.yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaMax/ChinaMax.yaml
+    interval: 86400
+
+dns:
+  enable: true
+  ipv6: true
+  prefer-h3: true
+  enhanced-mode: fake-ip
+  respect-rules: true
+  use-hosts: true
+  default-nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+    - 1.1.1.1
+    - 8.8.8.8
+  nameserver:
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
+  proxy-server-nameserver:
+    - https://1.1.1.1/dns-query
+    - https://8.8.8.8/dns-query
+  fake-ip-filter:
+    - "*.lan"
+    - "*.local"
+    - localhost.ptlogin2.qq.com
+    - "+.msftconnecttest.com"
+    - "+.msftncsi.com"
+
+rules:
+  - RULE-SET,apple-intelligence,🤖 AI
+  - RULE-SET,siri,🤖 AI
+  - RULE-SET,openai,🤖 AI
+  - RULE-SET,anthropic,🤖 AI
+  - RULE-SET,gemini,🤖 AI
+  - RULE-SET,bing,🤖 AI
+  - RULE-SET,github-copilot,🤖 AI
+  - RULE-SET,apple,🍎 Apple
+  - RULE-SET,microsoft,💻 Microsoft
+  - RULE-SET,github,🧑‍💻 Dev
+  - RULE-SET,telegram,🎬 Media
+  - RULE-SET,youtube,🎬 Media
+  - RULE-SET,netflix,🎬 Media
+  - RULE-SET,disney,🎬 Media
+  - RULE-SET,china-max,🎯 Direct
+  - GEOSITE,CN,🎯 Direct
+  - GEOIP,CN,🎯 Direct,no-resolve
+  - MATCH,🚀 Proxy
