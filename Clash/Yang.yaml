@@ -210,11 +210,15 @@ dns:
     - "+.msftncsi.com"
 
 rules:
-  - DOMAIN,smoot.apple.com,🚀 Proxy
-  - DOMAIN,guzzoni.apple.com,🚀 Proxy
-  - DOMAIN,genmoji.apple.com,🚀 Proxy
-  - DOMAIN,apple-relay.apple.com,🚀 Proxy
-  - DOMAIN,mask-api.icloud.com,🚀 Proxy
+  - DOMAIN-SUFFIX,smoot.apple.com,🚀 Proxy
+  - DOMAIN-SUFFIX,guzzoni.apple.com,🚀 Proxy
+  - DOMAIN-SUFFIX,genmoji.apple.com,🚀 Proxy
+  - DOMAIN-SUFFIX,siri.apple.com,🚀 Proxy
+  - DOMAIN-SUFFIX,apple-relay.apple.com,🚀 Proxy
+  - DOMAIN-SUFFIX,apple-relay.cloudflare.com,🚀 Proxy
+  - DOMAIN-SUFFIX,mask-api.icloud.com,🚀 Proxy
+  - DOMAIN-SUFFIX,gateway.icloud.com,🚀 Proxy
+  - DOMAIN-SUFFIX,metrics.icloud.com,🚀 Proxy
   - RULE-SET,apple-intelligence,🤖 AI
   - RULE-SET,siri,🤖 AI
   - RULE-SET,openai,🤖 AI
